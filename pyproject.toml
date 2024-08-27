@@ -1,0 +1,109 @@
+[tool.poetry]
+name = "rag_semantic_chunking"
+version = "0.1.0"
+description = "Experiment with semantic chunking for an RAG application."
+authors = ["Fuzzy Labs <info@fuzzylabs.ai>"]
+license = "Apache Software License 2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10, <3.13"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+pytest-cov = "^4.1.0"
+licensecheck = "^2024.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = "--cov=rag_semantic_chunking --cov-report term-missing"
+testpaths = [
+    "tests"
+]
+
+# mypy configuration
+[tool.mypy]
+show_error_codes = true
+exclude = ["docs", "tests", "LICENSE"]
+strict = true
+namespace_packages = true
+
+# black configuration
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
+exclude = '''
+/(
+	\.git
+| \.hg
+| \.mypy_cache
+| \.tox
+| \.venv
+| _build
+| buck-out
+| build
+)/
+'''
+
+[tool.ruff]
+target-version = "py310"
+
+# Match black. Note that this also checks comment line length, but black does not format comments.
+line-length = 88
+
+show-fixes = true
+
+[tool.ruff.lint]
+ignore-init-module-imports = true
+select = [
+    "C4",   # flake8-comprehensions
+    "SIM",  # flake8-simplify
+    "Q",    # flake8-quotes
+    "ISC",  # flake8-implicit-str-concat
+    "F",    # pyflakes
+    "D",    # pydocstyle
+    "E",    # pycodestyle error
+    "W",    # pycodestyle warning
+    "N",    # pep8-naming
+    "I",    # isort
+    "PL",   # pylint rules from categories "Convention", "Error", and "Warning"
+    "PLE",  # ruff currently implements only a subset of pylint's rules
+    "PLW",  # pylint warning
+    "PLR",  # pylint refactor
+    "UP",   # pyupgrade
+    "C",    # Complexity (mccabe+) & comprehensions
+]
+ignore = [
+    "UP006", # See https://github.com/bokeh/bokeh/issues/13143
+    "UP007", # See https://github.com/bokeh/bokeh/pull/13144
+]
+
+[tool.ruff.lint.pydocstyle]
+# Use Google-style docstrings.
+convention = "google"
+
+[tool.ruff.lint.mccabe]
+# Flag errors (`C901`) whenever the complexity level exceeds 5.
+max-complexity = 5
+
+
+# typos configuration
+[tool.typos.files]
+extend-exclude=[".gitignore", "LICENSE", ".*",]
+
+[tool.typos.default.extend-words]
+center = "center"
+
+[tool.typos.default]
+locale="en-gb"
+
+# Bandit configuration
+[tool.bandit]
+exclude_dirs = []
+
+[tool.bandit.assert_used]
+skips = ['*test.py', '*/test_*.py']
