@@ -27,4 +27,4 @@ To trigger the CI to run on a macOS backed workflow, add the `macos-ci-test` lab
 
 Our advice is to only run this workflow when testing the compatability between operating systems for a change that you've made, e.g., adding a new dependency to the virtual environment.
 
-> Note: This can take up to 5 minutes to run. This workflow costs x10 more than a Linux-based workflow, use at discretion. 
+> Note: This can take up to 5 minutes to run. This workflow costs x10 more than a Linux-based workflow, use at discretion.
