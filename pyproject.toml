@@ -8,11 +8,15 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10, <3.13"
+langchain-cohere = "^0.2.3"
+scikit-learn = "^1.5.1"
+matplotlib = "^3.9.2"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.3"
 pytest-cov = "^4.1.0"
 licensecheck = "^2024.1.2"
+ipykernel = "^6.29.5"
 
 
 [build-system]
@@ -93,7 +97,7 @@ max-complexity = 5
 
 # typos configuration
 [tool.typos.files]
-extend-exclude=[".gitignore", "LICENSE", ".*",]
+extend-exclude=[".gitignore", "LICENSE", ".*", "**/*.ipynb"]
 
 [tool.typos.default.extend-words]
 center = "center"
